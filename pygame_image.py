@@ -24,15 +24,17 @@ def main():
         screen.blit(bg_img_flip, [-(tmr%3200)+1600, 0])
         screen.blit(bg_img, [-(tmr%3200)+3200, 0])
         screen.blit(bg_img_flip, [-(tmr%3200)+4800, 0])
+        move_cache=[0,0]
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
+            move_cache[1]-=1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,1))
+            move_cache[1]+=1
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            move_cache[0]-=1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2,0))
-        kk_rct.move_ip((-1,0))
+            move_cache[0]+=2
+        move_cache[0]-=1
+        kk_rct.move_ip(move_cache)
         screen.blit(koukaton_img,kk_rct.center)
         pg.display.update()
         tmr += 1
