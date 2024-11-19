@@ -12,12 +12,14 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     koukaton_img = pg.image.load("fig/3.png")
     koukaton_img = pg.transform.flip(koukaton_img,True,False)
+    bg_img_flip = pg.transform.flip(bg_img,True,False)
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-(tmr%800), 0]) # screen Surfaceに背景画像を貼り付ける
+        screen.blit(bg_img, [-(tmr%3200), 0]) # screen Surfaceに背景画像を貼り付ける
+        screen.blit(bg_img_flip, [-(tmr%3200)+1600, 0])
         screen.blit(koukaton_img,[300,200])
         pg.display.update()
         tmr += 1
